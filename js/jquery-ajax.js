@@ -1,4 +1,4 @@
-;(function () {
+; (function () {
   //
   // jQuery is a popular library that simplifies many common web development tasks,
   // including AJAX. You can read more about jQuery here:
@@ -28,7 +28,7 @@
 
   $('#loadBtn2').click(clickBtn)
 
-  function clickBtn () {
+  function clickBtn() {
     $('#jumbotronContainer2').load('jumbotron.html')
     $('#loadBtn2').remove()
   }
@@ -71,6 +71,15 @@
   //
 
   // TODO: your code goes here :)
+  $('#generateDoggoBtn').click(fetchDoggo)
+
+  function fetchDoggo() {
+    $('#generateDoggoBtn').text('Generating Doggo!').attr("disabled", true)
+    $.get('https://dog.ceo/api/breeds/image/random', function (response) {
+        $('#doggoContainer').html(`<img src=${response.message}>`)
+        $('#generateDoggoBtn').text('Generating Doggo!').attr("disabled", false)
+    })
+  }
 
   //
   // Cool. Now let's kick it up a notch and allow selecting a specific breed of dog!
@@ -107,6 +116,12 @@
   //
 
   // TODO: your code goes here :)
+  $.get('https://dog.ceo/api/breeds/list', function(response) {
+      for (x in response.message) {
+        console.log(response.message[x])
+        $('#breeds').append(`<option value=${response.message[x]}>${response.message[x]}</option>`)
+      }
+  })
 
   //
   // Excellent work!

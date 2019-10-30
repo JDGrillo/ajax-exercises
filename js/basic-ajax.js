@@ -18,7 +18,7 @@
   request.open('GET', 'jumbotron.html') // where should this request be made to?
                                         // in this case, we are making an HTTP GET request
                                         // to the 'jumbotron.html' file
-
+  
   // add a click event to our button
   const buttonEl = document.getElementById('loadBtn1')
   buttonEl.addEventListener('click', clickBtn)
